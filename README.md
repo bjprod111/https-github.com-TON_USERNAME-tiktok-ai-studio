@@ -1,55 +1,24 @@
-# Amazon Q for Visual Studio Code
+# ClipFlow AI
 
-[![Marketplace Version](https://img.shields.io/vscode-marketplace/v/AmazonWebServices.amazon-q-vscode.svg) ![Marketplace Downloads](https://img.shields.io/vscode-marketplace/d/AmazonWebServices.amazon-q-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.amazon-q-vscode)
+ClipFlow AI is an independent short-form content planning workspace. It generates a structured content brief in the browser: a hook, outline, caption, and call to action.
 
-<!-- [![Coverage](https://img.shields.io/codecov/c/github/aws/amazon-q-vscode/master.svg)](https://codecov.io/gh/aws/amazon-q-vscode/branch/main) -->
+## Run locally
 
-Amazon Q for VS Code is a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=AmazonWebServices.amazon-q-vscode) for connecting your IDE to [Amazon Q](https://aws.amazon.com/q/developer/) and leveraging generative AI to accelerate your software development.
+Open `index.html` in a modern browser. No account, API key, or third-party platform connection is required.
 
--   Code faster with inline code suggestions as you type
--   Chat with [Amazon Q](https://aws.amazon.com/q/developer/) to generate code, explain code, and get answers to questions about software development
--   Analyze and fix security vulnerabilities in your project
--   Upgrade your Java applications
+## Test
 
-This project is open source. We encourage issues, feature requests, code reviews, pull requests or
-any positive contribution. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
-
-[Project Directory](https://github.com/aws/amazon-q-vscode/tree/master/packages/amazonq)
-
-## Documentation
-
--   Quick Start Guides for...
-    -   [Amazon Q](https://marketplace.visualstudio.com/itemdetails?itemName=AmazonWebServices.amazon-q-vscode)
--   [FAQ / Troubleshooting](./docs/faq-credentials.md)
--   [User Guide](https://docs.aws.amazon.com/console/toolkit-for-vscode/welcome)
--   General info about [AWS SDKs and Tools](https://docs.aws.amazon.com/sdkref/latest/guide/overview.html)
-
-## Feedback
-
-We want your feedback!
-
--   Upvote 👍 [feature requests](https://github.com/aws/amazon-q-vscode/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request+sort%3Areactions-%2B1-desc)
--   [Ask a question](https://github.com/aws/amazon-q-vscode/issues/new?labels=guidance&template=guidance_request.md)
--   [Request a new feature](https://github.com/aws/amazon-q-vscode/issues/new?labels=feature-request&template=feature_request.md)
--   [File an issue](https://github.com/aws/amazon-q-vscode/issues/new?labels=bug&template=bug_report.md)
--   Or [send a pull request](CONTRIBUTING.md)!
-
-## License Scanning
-
-To generate license reports and attribution documents for third-party dependencies:
-
-```bash
-npm run scan-licenses
-
-# Or run directly
-./scripts/scan-licenses.sh
+```powershell
+# Verify the content-brief generator.
+npm test
 ```
 
-This generates:
+## Product boundaries
 
--   `LICENSE-THIRD-PARTY` - Attribution document for distribution
--   `licenses-full.json` - Complete license data
+- This starter does not post to social platforms, scrape websites, or promise audience growth.
+- It does not use any third-party API or collect user data.
+- Any future social-platform integration must use that platform's official API and comply with its approval, consent, branding, and privacy requirements.
 
-## License
+## Licensing and notices
 
-This project and the subprojects within **(Amazon Q for Visual Studio Code)** is distributed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+The repository retains the Apache-2.0 license and historical upstream attribution records in `legal/`. ClipFlow AI is an independent project and is not affiliated with the parties named in those archived notices.

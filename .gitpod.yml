@@ -1,7 +1,0 @@
-tasks:
-    - init: npm install
-
-vscode:
-    extensions:
-        - dbaeumer.vscode-eslint
-        - eg2.vscode-npm-script
