@@ -1,42 +1,48 @@
 # ClipFlow AI
 
-ClipFlow AI is an independent short-form content planning workspace. It generates a structured content brief in the browser: a hook, outline, caption, and call to action.
+ClipFlow AI is a privacy-first short-form content planning workspace. Give it a topic, audience, goal, and tone and it creates an editable content brief with a hook, outline, caption, and call to action.
+
+## What it is today
+
+The current MVP runs entirely in the browser and uses a deterministic template engine. **It does not currently call an AI model.** No account, API key, backend, or social-platform connection is required.
 
 ## Run locally
 
-Open `index.html` in a modern browser. No account, API key, or third-party platform connection is required.
+Open `index.html` in a modern browser.
 
-## Test
+To run the automated tests:
 
 ```powershell
-# Verify the content-brief generator.
 npm test
 ```
 
-## Product boundaries
+## Product roadmap
 
-- This starter does not post to social platforms, scrape websites, or promise audience growth.
-- It does not use any third-party API or collect user data.
-- Any future social-platform integration must use that platform's official API and comply with its approval, consent, branding, and privacy requirements.
+The project is structured to grow from a free privacy-first planner into a creator toolkit:
 
-## Licensing and notices
+- **Free:** local content briefs, copy, and `.txt` export.
+- **Creator:** secure AI generation, saved history, content calendars, richer exports.
+- **Pro:** multiple brands, batch generation, analytics, and team workflows.
+- **Integrations:** official platform APIs only, with appropriate consent, privacy, branding, and approval requirements.
 
-The repository retains the Apache-2.0 license and historical upstream attribution records in `legal/`. ClipFlow AI is an independent project and is not affiliated with the parties named in those archived notices.
+AI provider credentials must stay server-side when real model integrations are added; they must never be embedded in browser JavaScript.
 
-## 💡 Support My Work
+## Security
 
-I share my projects freely so others can build faster.  
-If you’d like to support ongoing development, here are the ways:
+Generated user text is rendered with DOM APIs rather than injected as HTML. Browser storage is used only for local brief history. Do not treat localStorage as a secure store for secrets or sensitive data.
 
-![Support Banner](support-banner.png)
+## Licensing and attribution
 
-- 💜 [**Sponsor on GitHub**](https://github.com/sponsors/bjprod111)
-- ☕ [**Buy Me a Coffee**](https://buymeacoffee.com/bjprod111)
-- 💳 [**Donate via PayPal**](https://paypal.me/bjprod)
+Apache-2.0 applies to this repository. Historical upstream attribution records are retained in `legal/`. ClipFlow AI is an independent project and does not imply affiliation with upstream projects or social platforms.
 
-<C0d3>
-<D3pl0y>
-<@ut0m4t3>
-<R3p34t>
-"@
+## Support
 
+If ClipFlow helps your work, you can support development through the links below:
+
+- [GitHub Sponsors](https://github.com/sponsors/bjprod111)
+- [Buy Me a Coffee](https://buymeacoffee.com/bjprod111)
+- [PayPal](https://paypal.me/bjprod)
+
+## Contributing
+
+Issues and pull requests are welcome. Keep the product privacy-first, avoid platform-policy shortcuts, and use official APIs for future integrations.
