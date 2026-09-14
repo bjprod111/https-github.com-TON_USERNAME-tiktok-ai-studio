@@ -2,11 +2,11 @@
  * Produces an editable short-form content brief without calling a third-party
  * platform or sending user data anywhere.
  */
-export function createContentBrief({ topic, audience, goal, tone }) {
-    const cleanTopic = topic.trim() || 'your offer'
-    const cleanAudience = audience.trim() || 'your audience'
-    const cleanGoal = goal.trim() || 'start a conversation'
-    const cleanTone = tone.trim() || 'clear and useful'
+export function createContentBrief({ topic = '', audience = '', goal = '', tone = '' } = {}) {
+    const cleanTopic = String(topic).trim() || 'your offer'
+    const cleanAudience = String(audience).trim() || 'your audience'
+    const cleanGoal = String(goal).trim() || 'start a conversation'
+    const cleanTone = String(tone).trim() || 'clear and useful'
 
     return {
         hook: `Stop scrolling if you are ${cleanAudience}: here is what to know about ${cleanTopic}.`,
