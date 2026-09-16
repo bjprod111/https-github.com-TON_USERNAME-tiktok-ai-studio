@@ -5,7 +5,7 @@
   "description": "A privacy-first short-form content planning workspace with a deterministic template engine.",
   "type": "module",
   "scripts": {
-    "build": "node -e \"console.log('Static site: no compile step required')\"",
+    "build": "mkdir -p build && cp index.html build/index.html && cp styles.css build/styles.css && cp app.js build/app.js",
     "test": "node --test tests/planner.test.js"
   },
   "license": "Apache-2.0",
