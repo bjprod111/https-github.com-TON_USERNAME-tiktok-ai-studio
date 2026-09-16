@@ -1,0 +1,37 @@
+﻿REPO_ROOT: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601
+
+--- TIMESTAMP ---
+2026-09-15 21:28:57Z
+
+--- TOP LEVEL FILES ---
+
+
+--- KEY FILES ---
+Created .dockerignore at: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601\.dockerignore
+Created Node Dockerfile at: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601\Dockerfile
+Created amplify.yml for Node at: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601\amplify.yml
+
+--- NPM BUILD ---
+
+
+No build script found in package.json
+
+No requirements.txt — skipping Python steps.
+
+--- DOCKER BUILD ---
+
+Building Docker image: bjprod111/tiktok-ai-studio:4706bd5
+
+Docker build failed (exit code non-zero).
+
+--- CI WORKFLOWS ---
+
+
+--- NPM AUDIT (summary) ---
+npm audit written to npm-audit.json
+
+--- SUMMARY ---
+Repo root: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601
+Dockerfile: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601\Dockerfile
+amplify.yml: C:\Users\PC\Projects\tiktok-ai-studio-20260915-211601\amplify.yml
+Docker build ok: False
