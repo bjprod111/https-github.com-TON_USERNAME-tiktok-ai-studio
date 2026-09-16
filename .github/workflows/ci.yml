@@ -14,4 +14,5 @@ jobs:
       - name: Build
         run: npm run build || echo "no build script"
       - name: Docker build
-        run: docker build -t ${{ github.repository }}:${{ github.sha }} .
+        run: IMAGE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'); docker build -t $IMAGE:${{ github.sha}} .
+
