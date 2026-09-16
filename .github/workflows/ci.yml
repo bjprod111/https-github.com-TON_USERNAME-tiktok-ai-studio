@@ -9,10 +9,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install
-        run: npm ci || echo "no npm ci"
-      - name: Build
+      - name: Install dependencies
+        run: npm ci --silent
+      - name: Build project
         run: npm run build || echo "no build script"
       - name: Docker build
-        run: IMAGE=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]'); docker build -t $IMAGE:${{ github.sha}} .
-
+        run: |
+          IMAGE=$(echo "${{ github.repository }}" | tr "[:upper:]" "[:lower:]")
+          docker build -t $IMAGE:${{ github.sha }} .
