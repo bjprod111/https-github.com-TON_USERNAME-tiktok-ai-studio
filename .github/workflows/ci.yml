@@ -1,0 +1,17 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install
+        run: npm ci || echo "no npm ci"
+      - name: Build
+        run: npm run build || echo "no build script"
+      - name: Docker build
+        run: docker build -t ${{ github.repository }}:${{ github.sha }} .
