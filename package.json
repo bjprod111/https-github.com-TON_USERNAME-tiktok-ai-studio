@@ -1,15 +1,13 @@
 {
   "name": "clipflow-ai",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "A privacy-first short-form content planning workspace with a deterministic template engine.",
   "type": "module",
   "scripts": {
-    "build": "mkdir -p build && cp index.html build/index.html && cp styles.css build/styles.css && cp app.js build/app.js",
+    "build": "mkdir -p build && cp index.html build/index.html && cp styles.css build/styles.css && cp app.js build/app.js && cp planner.js build/planner.js",
     "test": "node --test tests/planner.test.js"
   },
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=20"
-  }
+  "engines": { "node": ">=20" }
 }
