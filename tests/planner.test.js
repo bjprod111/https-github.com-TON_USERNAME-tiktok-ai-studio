@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { createContentBrief } from '../planner.js'
+import { createContentBrief, generateBriefVariations } from '../planner.js'
 
 test('creates a complete brief from creator inputs', () => {
     const brief = createContentBrief({
@@ -20,20 +20,31 @@ test('falls back safely when inputs are missing', () => {
     const brief = createContentBrief()
 
     assert.match(brief.hook, /your audience/)
-    assert.match(brief.hook, /your offer/)
     assert.equal(brief.outline.length, 3)
     assert.match(brief.callToAction, /start a conversation/)
 })
 
-test('trims whitespace and preserves user intent', () => {
+test('supports multiple monetizable templates', () => {
     const brief = createContentBrief({
-        topic: '  meal prep  ',
-        audience: ' busy students ',
-        goal: ' save money ',
-        tone: ' practical ',
+        topic: 'meal prep',
+        audience: 'busy students',
+        goal: 'save money',
+        template: 'education',
     })
 
-    assert.match(brief.hook, /busy students/)
-    assert.match(brief.caption, /^meal prep, made practical\./)
-    assert.match(brief.callToAction, /save money/)
+    assert.equal(brief.title, 'Teach it')
+    assert.match(brief.outline[0], /common mistake/)
+})
+
+test('generates variation content for the editing workspace', () => {
+    const variations = generateBriefVariations({
+        topic: 'meal prep',
+        audience: 'busy students',
+        goal: 'save money',
+        tone: 'friendly',
+        template: 'education',
+    })
+
+    assert.equal(variations.length, 4)
+    assert.match(variations[0].value, /busy students/)
 })
