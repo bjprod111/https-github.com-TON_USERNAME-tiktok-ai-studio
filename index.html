@@ -1,69 +1,134 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="ClipFlow AI is a privacy-first short-form content planner for turning ideas into structured briefs." />
-        <meta name="theme-color" content="#0d1020" />
-        <title>ClipFlow AI | Short-form content planner</title>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <main>
-            <nav aria-label="Primary navigation">
-                <a class="brand" href="./">ClipFlow <span>AI</span></a>
-                <a href="#planner">Planner</a>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ClipFlow AI is a privacy-first, AI-ready short-form content planning workspace." />
+    <meta name="theme-color" content="#111827" />
+    <title>ClipFlow AI | Creator workflow</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Workspace navigation">
+            <a class="brand" href="./" aria-label="ClipFlow AI home"><span class="brand-mark">✦</span><span>ClipFlow <b>AI</b></span></a>
+            <div class="workspace-switcher"><span class="avatar">CF</span><span><strong>My workspace</strong><small>Creator mode</small></span><span class="chevron">⌄</span></div>
+            <nav class="nav-links">
+                <a class="active" href="#planner"><span>✎</span> Planner</a>
+                <a href="#history"><span>◷</span> History <em id="history-count">0</em></a>
+                <a href="#templates"><span>▦</span> Templates</a>
             </nav>
-
-            <section class="hero">
-                <p class="eyebrow">Privacy-first content planning</p>
-                <h1>Turn one idea into a content brief in seconds.</h1>
-                <p class="lede">Create a hook, outline, caption, and call to action without an account or third-party connection. Everything stays in your browser.</p>
-                <a class="button" href="#planner">Create a free brief</a>
-            </section>
-
-            <section class="trust-grid" aria-label="Product benefits">
-                <article><strong>Private by default</strong><span>No account or API key required.</span></article>
-                <article><strong>Fast workflow</strong><span>Go from idea to export in one screen.</span></article>
-                <article><strong>AI-ready</strong><span>Built to add secure AI providers later.</span></article>
-            </section>
-
-            <section class="planner" id="planner">
-                <div>
-                    <p class="eyebrow">ClipFlow planner</p>
-                    <h2>Start with the message, not the platform.</h2>
-                    <p>Describe your idea and audience. ClipFlow turns those inputs into an editable short-form content brief.</p>
-                    <p class="small-note">Current version uses a local deterministic template engine. It does not claim to call an AI model.</p>
-                </div>
-                <form id="brief-form">
-                    <label>Topic<input name="topic" required maxlength="120" placeholder="A 10-minute home workout" /></label>
-                    <label>Audience<input name="audience" required maxlength="120" placeholder="busy first-time parents" /></label>
-                    <label>Goal<input name="goal" required maxlength="120" placeholder="book a trial session" /></label>
-                    <label>Tone<input name="tone" value="friendly and confident" maxlength="80" /></label>
-                    <button type="submit">Generate brief</button>
-                </form>
-            </section>
-
-            <section class="result" id="brief-output" aria-label="Generated brief">
-                <p>Your next content brief will appear here.</p>
-            </section>
-            <div class="actions">
-                <button class="secondary" id="copy-brief" type="button" disabled>Copy brief</button>
-                <button class="secondary" id="reset-brief" type="button" disabled>Clear</button>
-                <button id="export-brief" type="button" disabled>Export .txt</button>
+            <div class="sidebar-bottom">
+                <div class="upgrade-card"><span class="sparkle">✦</span><strong>Revenue-ready workflow</strong><p>Templates, editing panels and AI-ready prompts in one local workspace.</p><a href="#roadmap">View roadmap →</a></div>
+                <a class="nav-muted" href="#privacy"><span>◌</span> Your data stays local</a>
             </div>
+        </aside>
 
-            <section class="monetization" aria-label="Product roadmap">
-                <p class="eyebrow">Built to grow</p>
-                <h2>From free planner to creator toolkit.</h2>
-                <div class="roadmap">
-                    <div><strong>Free</strong><span>Local briefs, copy, export.</span></div>
-                    <div><strong>Creator</strong><span>AI generation, history, calendars.</span></div>
-                    <div><strong>Pro</strong><span>Brands, batch generation, team workflows.</span></div>
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="breadcrumb">Workspace <span>/</span> Planner</p>
+                    <h1>Build content that actually converts.</h1>
+                </div>
+                <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Open navigation">☰</button>
+                <div class="topbar-actions">
+                    <span class="status-dot"></span>
+                    <span>Saved locally</span>
+                    <button class="icon-button" id="clear-all" type="button" title="Clear current draft">↺</button>
+                </div>
+            </header>
+
+            <section class="workspace" id="planner">
+                <div class="panel input-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">01 · Brief builder</p>
+                            <h2>Shape your next idea</h2>
+                        </div>
+                        <span class="step-badge">LOCAL</span>
+                    </div>
+                    <p class="panel-intro">Choose a format, explain the audience, then refine the hook, outline, caption, and CTA before publishing.</p>
+
+                    <div class="template-picker" id="templates">
+                        <div class="picker-heading">
+                            <strong>Choose a template</strong>
+                            <span id="template-description">A balanced short-form video brief.</span>
+                        </div>
+                        <div class="template-grid" id="template-grid"></div>
+                    </div>
+
+                    <form id="brief-form" novalidate>
+                        <label for="topic">Topic or idea <span class="required">*</span><input id="topic" name="topic" required maxlength="120" placeholder="e.g. A 10-minute home workout" /></label>
+                        <label for="audience">Who is this for? <span class="required">*</span><input id="audience" name="audience" required maxlength="120" placeholder="e.g. busy first-time parents" /></label>
+                        <label for="goal">What should they do next? <span class="required">*</span><input id="goal" name="goal" required maxlength="120" placeholder="e.g. book a trial session" /></label>
+
+                        <div class="form-row">
+                            <label for="tone">Tone<select id="tone" name="tone"><option>Friendly and confident</option><option>Educational and clear</option><option>Bold and energetic</option><option>Warm and relatable</option><option>Playful and casual</option></select></label>
+                            <label for="platform">Platform<select id="platform" name="platform"><option>TikTok</option><option>Instagram Reels</option><option>YouTube Shorts</option></select></label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="button primary-button" type="submit"><span>✦</span> Generate workspace <kbd>⌘ ↵</kbd></button>
+                            <button class="text-button" id="try-example" type="button">Try an example</button>
+                        </div>
+                        <p class="form-note"><span>⌾</span> Deterministic by default, AI-provider ready later. Nothing leaves your browser.</p>
+                    </form>
+                </div>
+
+                <div class="panel output-panel" id="result-panel" aria-live="polite">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">02 · Editing workspace</p>
+                            <h2 id="output-title">Ready when you are</h2>
+                        </div>
+                        <span class="step-badge muted" id="completion-badge">0 / 4</span>
+                    </div>
+
+                    <div id="brief-output" class="empty-state">
+                        <div class="empty-icon">✦</div>
+                        <h3>Your editable workspace will appear here</h3>
+                        <p>Generate a brief to unlock editable hook, outline, caption, CTA, and content variations.</p>
+                    </div>
+
+                    <div class="output-actions" id="output-actions" hidden>
+                        <button class="button secondary-button" id="copy-brief" type="button">Copy all</button>
+                        <button class="button secondary-button" id="export-brief" type="button">Download .txt</button>
+                        <button class="icon-button" id="reset-brief" type="button" title="Start over">↺</button>
+                    </div>
                 </div>
             </section>
+
+            <section class="recent-section" id="history">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Your workspace</p>
+                        <h2>Recent briefs</h2>
+                    </div>
+                    <button class="text-button" id="clear-history" type="button">Clear history</button>
+                </div>
+                <div class="recent-grid" id="recent-grid">
+                    <div class="recent-empty">Generated briefs will be saved here automatically.</div>
+                </div>
+            </section>
+
+            <section class="roadmap-section" id="roadmap">
+                <div>
+                    <p class="eyebrow">Monetizable workflow</p>
+                    <h2>Start local. Scale when your product is ready.</h2>
+                    <p>Sell a focused creator workspace today and add secure AI providers, brand kits, and collaboration as paid upgrades.</p>
+                </div>
+                <div class="roadmap-list">
+                    <div><span>01</span><strong>Free planner</strong><small>Templates, local editing, copy and export</small><b>Available now</b></div>
+                    <div><span>02</span><strong>Creator toolkit</strong><small>AI generation, content history, and calendars</small><b>Coming soon</b></div>
+                    <div><span>03</span><strong>Team workspace</strong><small>Brand voice, batch generation, and sharing</small><b>On the roadmap</b></div>
+                </div>
+            </section>
+
+            <footer id="privacy"><span>© 2026 ClipFlow AI</span><span>Private by default · Independent software · Apache-2.0</span></footer>
         </main>
-        <footer>© 2026 ClipFlow AI · Independent software · Apache-2.0</footer>
-        <script type="module" src="app.js"></script>
-    </body>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="app.js"></script>
+</body>
 </html>
