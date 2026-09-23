@@ -1,3 +1,151 @@
 /* AI-ready creator workspace additions */
-.template-picker { border: 1px solid #edf0f5; border-radius: 10px; padding: 12px; margin-bottom: 18px; background: #fbfcfe; }.picker-heading { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 10px; }.picker-heading strong { font-size: .73rem; }.picker-heading span { color: #98a1b0; font-size: .65rem; text-align: right; }.template-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }.template-card { display: grid; gap: 3px; min-width: 0; text-align: left; border: 1px solid #e2e6ef; background: #fff; color: #657084; border-radius: 8px; padding: 8px; cursor: pointer; }.template-card:hover, .template-card.selected { border-color: #a595ed; background: #f5f2ff; color: #5941c6; }.template-icon { font-size: .9rem; }.template-card strong { font-size: .67rem; }.template-card small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .57rem; color: #9aa3b2; }.template-card.selected small { color: #8173c6; }.edit-field { display: grid; gap: 7px; border: 1px solid #edf0f4; border-radius: 9px; padding: 11px; background: #fcfdff; }.edit-field > span { color: #7057df; font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }.edit-field input, .edit-field textarea { border: 0; border-bottom: 1px solid #e4e8f0; border-radius: 0; padding: 4px 0 7px; resize: vertical; background: transparent; font-size: .8rem; }.edit-field input:focus, .edit-field textarea:focus { box-shadow: none; border-color: #a595ed; }.outline-editor { gap: 8px; }.outline-editor input { padding-left: 4px; }.outline-editor input::before { content: '•'; }
-@media (max-width: 650px) { .template-grid { grid-template-columns: repeat(2, 1fr); }.picker-heading { display: grid; }.picker-heading span { text-align: left; } }
+.template-picker {
+    border: 1px solid #edf0f5;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 18px;
+    background: #fbfcfe;
+}
+
+.picker-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.picker-heading strong { font-size: .73rem; }
+.picker-heading span {
+    color: #98a1b0;
+    font-size: .65rem;
+    text-align: right;
+}
+
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
+
+.template-card {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+    text-align: left;
+    border: 1px solid #e2e6ef;
+    background: #fff;
+    color: #657084;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.template-card:hover,
+.template-card.selected {
+    border-color: #a595ed;
+    background: #f5f2ff;
+    color: #5941c6;
+}
+
+.template-icon { font-size: .9rem; }
+.template-card strong { font-size: .67rem; }
+.template-card small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .57rem;
+    color: #9aa3b2;
+}
+
+.template-card.selected small { color: #8173c6; }
+
+.edit-field {
+    display: grid;
+    gap: 7px;
+    border: 1px solid #edf0f4;
+    border-radius: 9px;
+    padding: 11px;
+    background: #fcfdff;
+}
+
+.edit-field > span {
+    color: #7057df;
+    font-size: .65rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.edit-field input,
+.edit-field textarea {
+    border: 0;
+    border-bottom: 1px solid #e4e8f0;
+    border-radius: 0;
+    padding: 4px 0 7px;
+    resize: vertical;
+    background: transparent;
+    font-size: .8rem;
+}
+
+.edit-field input:focus,
+.edit-field textarea:focus {
+    box-shadow: none;
+    border-color: #a595ed;
+}
+
+.outline-editor { gap: 8px; }
+.outline-editor input { padding-left: 4px; }
+
+.variant-panel {
+    border: 1px solid #edf0f4;
+    border-radius: 9px;
+    padding: 11px;
+    background: #fbfcff;
+    display: grid;
+    gap: 10px;
+}
+
+.variant-header {
+    font-size: .66rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #7057df;
+}
+
+.variant-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.variation-card {
+    border: 1px solid #e6e9f3;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+}
+
+.variation-card strong {
+    display: block;
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #8a93a3;
+    margin-bottom: 6px;
+}
+
+.variation-card p {
+    margin: 0;
+    font-size: .72rem;
+    line-height: 1.6;
+    color: #3d485d;
+}
+
+@media (max-width: 650px) {
+    .template-grid { grid-template-columns: repeat(2, 1fr); }
+    .picker-heading { display: grid; }
+    .picker-heading span { text-align: left; }
+    .variant-grid { grid-template-columns: 1fr; }
+}
